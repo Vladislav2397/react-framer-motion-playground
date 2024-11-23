@@ -1,19 +1,65 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
-import { AnimatedOutlet } from './shared/lib/router/AnimatedOutlet'
+import { createHistoryRouter } from 'atomic-router';
+import { createRouteView, RouterProvider, useRouter } from 'atomic-router-react'
+import { createBrowserHistory } from 'history';
+
+import { HomePage } from './pages/HomePage'
+import { AboutPage } from './pages/AboutPage'
+
 import { Header } from './widgets/Header/Header'
 
-const App: React.FC = () => {
-  const location = useLocation()
+import { routes } from './shared/lib/router/index.ts'
+import './shared/styles/global.scss'
+import { AnimatePresence } from 'framer-motion'
+import { useUnit } from 'effector-react'
+import { PageFadeLayout } from './shared/layouts/PageFadeLayout'
 
-  const key = location.pathname.slice(1).split('/')[0]
+const router = createHistoryRouter({
+  routes: [
+    { path: '/', route: routes.home },
+    { path: '/about', route: routes.about }
+  ],
+})
+const history = createBrowserHistory();
 
+router.setHistory(history)
+
+// const Routes = createRoutesView({
+//   routes: [
+//     { route: routes.home, view: HomePage },
+//     { route: routes.about, view: AboutPage },
+//   ],
+// })
+const HomeRoute = createRouteView({
+  route: routes.home,
+  view: HomePage,
+})
+const AboutRoute = createRouteView({
+  route: routes.about,
+  view: AboutPage,
+})
+
+export const App: React.FC = () => {
   return (
-    <div>
-      <Header />
-      <AnimatedOutlet keyValue={key} />
-    </div>
+    <AnimatePresence>
+      <RouterProvider router={router}>
+        <AppRoutes />
+      </RouterProvider>
+    </AnimatePresence>
   )
 }
 
-export default App
+const AppRoutes = () => {
+  const { $path } = useRouter()
+  const [path] = useUnit([$path])
+
+  return (
+    <>
+      <Header />
+      <PageFadeLayout key={path}>
+        <HomeRoute />
+        <AboutRoute />
+      </PageFadeLayout>
+    </>
+  )
+}
