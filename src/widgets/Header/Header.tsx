@@ -8,6 +8,7 @@ export const Header: React.FC = () => {
         <div className={styles.root}>
             <Link className={styles.link} to={'/'}>Home</Link>
             <Link className={styles.link} to={'/about'}>About</Link>
+            <Link className={styles.link} to={'/articles'}>Articles</Link>
         </div>
     )
 }

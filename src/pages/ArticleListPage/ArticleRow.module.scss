@@ -1,0 +1,19 @@
+.root {
+    display: flex;
+    gap: 20px;
+    max-width: 600px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    background-color: #ccc;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
