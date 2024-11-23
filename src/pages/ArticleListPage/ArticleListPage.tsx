@@ -13,11 +13,11 @@ export const ArticleListPage: React.FC = () => {
 
     return (
         <PageFadeLayout>
-            <ArticleRow title={'some article'} onClick={() => navigate('1')} />
+            <ArticleRow id={1} title={'some article'} onClick={() => navigate('1')} />
             <br/>
-            <ArticleRow title={'some article 2'} onClick={() => navigate('2')} />
+            <ArticleRow id={2} title={'some article 2'} onClick={() => navigate('2')} />
             <br/>
-            <ArticleRow title={'some article 3'} onClick={() => navigate('3')} />
+            <ArticleRow id={3} title={'some article 3'} onClick={() => navigate('3')} />
             <AnimatedOutlet keyValue={key} />
         </PageFadeLayout>
     )

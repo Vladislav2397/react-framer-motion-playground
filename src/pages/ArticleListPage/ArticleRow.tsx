@@ -1,14 +1,15 @@
 import React from 'react'
 import styles from './ArticleRow.module.scss'
+import { motion } from 'framer-motion'
 
-export const ArticleRow: React.FC<{ title: string, onClick?: () => void }> = ({ title, onClick }) => {
+export const ArticleRow: React.FC<{ id: number, title: string, onClick?: () => void }> = ({ id, title, onClick }) => {
     return (
-        <div className={styles.root} onClick={onClick}>
-            <div className={styles.image}></div>
-            <div className={styles.content}>
+        <motion.div layoutId={`article-box-${id}`} className={styles.root} onClick={onClick}>
+            <motion.div layoutId={`article-image-${id}`} className={styles.image}></motion.div>
+            <motion.div layoutId={`article-content-${id}`} className={styles.content}>
                 <h4>{title}</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nobis voluptatum nulla doloribus provident quasi autem!</p>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }

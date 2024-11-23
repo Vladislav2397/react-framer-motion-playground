@@ -1,0 +1,36 @@
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#ccc, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    max-width: 400px;
+    max-height: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image {
+    position: relative;
+    height: 200px;
+    width: 100%;
+}
+
+.cover {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: 0;
+    background-color: #ccc;
+}
