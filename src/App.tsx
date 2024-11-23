@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { AnimatedOutlet } from './shared/lib/router/AnimatedOutlet'
+import { Header } from './widgets/Header/Header'
 
 const App: React.FC = () => {
   const location = useLocation()
@@ -9,16 +10,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to={'/'}>Home</Link>
-          </li>
-          <li>
-            <Link to={'/about'}>About</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <AnimatedOutlet keyValue={key} />
     </div>
   )

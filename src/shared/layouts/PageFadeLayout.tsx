@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 export const PageFadeLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     return (
         <motion.div
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2, type: 'easyInOut' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
