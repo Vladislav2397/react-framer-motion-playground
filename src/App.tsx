@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-do
 import { HomePage } from './pages/HomePage'
 import { AboutPage } from './pages/AboutPage/AboutPage'
 import { AnimatePresence } from 'framer-motion'
+import { ContactsPage } from './pages/AboutPage/ContactsPage/ContactsPage'
 
 const App: React.FC = () => {
   return (
@@ -27,11 +28,17 @@ const App: React.FC = () => {
 const AnimatedRoutes = () => {
   const location = useLocation()
 
+  console.log('location', location)
+
+  const [firstRouteKey, secondRouteKey] = location.pathname.split('/').slice(1)
+
   return (
     <AnimatePresence mode='wait'>
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location} key={firstRouteKey}>
             <Route path='/' element={<HomePage />} />
-            <Route path='/about' element={<AboutPage />} />
+            <Route path='/about' element={<AboutPage />}>
+                <Route path='/about/contacts' element={<ContactsPage />} key={secondRouteKey}/>
+            </Route>
         </Routes>
     </AnimatePresence>
   )
