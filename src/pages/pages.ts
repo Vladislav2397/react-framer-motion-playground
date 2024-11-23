@@ -4,6 +4,7 @@ import { AboutPage } from "./AboutPage";
 import { ContactsPage } from "./AboutPage/ContactsPage/ContactsPage";
 import { ArticleListPage } from "./ArticleListPage";
 import { ArticlePage } from './ArticlePage'
+import { BlogPage } from "./BlogPage/BlogPage";
 
 export const routes = [
     {
@@ -34,5 +35,10 @@ export const routes = [
                 element: React.createElement(ArticlePage),
             }
         ]
+    },
+    {
+        name: 'Blog',
+        path: "/blog",
+        element: React.createElement(BlogPage),
     },
 ]
