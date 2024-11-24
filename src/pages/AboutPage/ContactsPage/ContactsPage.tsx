@@ -1,16 +1,16 @@
-import React from "react";
+import React from "react"
 import { PageFullscreenModalLayout } from "../../../shared/layouts/PageFullscreenModalLayout"
-import { Link, useNavigate } from "react-router-dom"
+import { routes } from "../../../shared/lib/router"
+import { Link } from "atomic-router-react"
+import { useUnit } from "effector-react"
 
 export const ContactsPage: React.FC = () => {
-    const navigate = useNavigate()
+    const [close] = useUnit([routes.about.open])
 
     return (
-        <PageFullscreenModalLayout onBackdropClick={() => {
-            navigate('..')
-        }}>
+        <PageFullscreenModalLayout onBackdropClick={close}>
             <h1>Contacts</h1>
-            <Link to={'..'}>to back</Link>
+            <Link to={routes.about}>to back</Link>
         </PageFullscreenModalLayout>
     )
 }
